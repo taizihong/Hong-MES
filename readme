@@ -1,0 +1,17 @@
+CREATE DATABASE mes117 CHARACTER SET utf8;
+CREATE TABLE testUser(
+id INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
+NAME VARCHAR(20) NOT NULL COMMENT '姓名'
+)CHARACTER SET utf8;
+
+1.创建maven工程，war包  web工程  修改下JRE版本，.1.5改成1.8版本。没有报错就没问题了。
+
+2.将pom.xml文件里面的配置依赖包复制过来。
+
+3.在src/main/java文件下建立系统所需要的包。这里需要注意一下建立包时候的结构
+
+4.在resoures这里建立spring的包和建立applicationContext.xml的配置文件
+
+5.首先在applicationContext里面配置的是数据库连接信息和druid连接池，同时在WEB-INF下的web.xml里面配置applicationContext。
+
+6.配置mybatis 开启事物  配置sping-servlet  包扫描 然后db的配置 先配置mybatis  dbproperties  logback.xml的配置 测试搭建的问题有没有问题，测试没问题就开始做开发
