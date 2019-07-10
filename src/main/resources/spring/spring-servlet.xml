@@ -29,11 +29,11 @@
     <mvc:resources location="/bootstrap3.3.5/" mapping="/bootstrap3.3.5/**"/>
     <mvc:resources location="/assets/" mapping="/assets/**"/>
     <mvc:resources location="/ztree/" mapping="/ztree/**"/>
+   
+    <mvc:resources location="/template/" mapping="/template/**"/> 
     
-<!--     <mvc:resources location="/template/" mapping="/template/**"/> 
- -->    
-<!--     <mvc:resources location="/WEB-INF/views/order/" mapping="/order/**"/> 
- -->    
+    <mvc:resources location="/WEB-INF/views/order/" mapping="/order/**"/> 
+   
 <!--     配置全局异常类
     <bean class="com.hong.common.SpringExceptionResolver"></bean>
     配置全局上下文
