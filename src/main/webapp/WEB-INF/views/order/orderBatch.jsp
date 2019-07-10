@@ -103,8 +103,8 @@
 							</thead>
 							<tbody id="orderList">
 
-								<tr role="row" class="user-name odd" data-id="{{id}}">
-									<!--even -->
+								<!-- 								<tr role="row" class="user-name odd" data-id="{{id}}">
+									even
 									<td><a href="#" class="user-edit" data-id="{{id}}">{{id}}</a></td>
 									<td>{{order_id}}</td>
 									<td>{{order_productname}}</td>
@@ -118,7 +118,7 @@
 									<td>{{order_status}}</td>
 									<td>{{order_remark}}</td>
 
-									<!-- 此处套用函数对status做特殊处理 -->
+									此处套用函数对status做特殊处理
 									<td>
 										<div class="hidden-sm hidden-xs action-buttons">
 											<a class="green user-edit" href="#" data-id="{{id}}"> <i
@@ -131,7 +131,7 @@
 								</tr>
 
 								<tr role="row" class="user-name odd" data-id="{{id}}">
-									<!--even -->
+									even
 									<td><a href="#" class="user-edit" data-id="{{id}}">{{id}}</a></td>
 									<td>{{order_id}}</td>
 									<td>{{order_productname}}</td>
@@ -145,7 +145,7 @@
 									<td>{{order_status}}</td>
 									<td>{{order_remark}}</td>
 
-									<!-- 此处套用函数对status做特殊处理 -->
+									此处套用函数对status做特殊处理
 									<td>
 										<div class="hidden-sm hidden-xs action-buttons">
 											<a class="green user-edit" href="#" data-id="{{id}}"> <i
@@ -155,12 +155,12 @@
 											</a>
 										</div>
 									</td>
-								</tr>
+								</tr> -->
 
 							</tbody>
 						</table>
 						<div class="row" id="orderPage">
-							<div class="col-xs-6">
+							<!-- 							<div class="col-xs-6">
 								<div class="dataTables_info" id="dynamic-table_info"
 									role="status" aria-live="polite">总共 {{total}} 条中的
 									{{from}} ~ {{to}}条 当前第{{pageNo}}页&nbsp;&nbsp;&nbsp;共
@@ -202,7 +202,7 @@
 											class="page-action skip">跳转</a></li>
 									</ul>
 								</div>
-							</div>
+							</div> -->
 
 						</div>
 					</div>
@@ -210,7 +210,7 @@
 			</div>
 		</div>
 	</div>
-	<%--  	<%@ include file="orderForm/orderUpdateForm.jsp" %> --%>
+	<%@ include file="orderForm/orderUpdateForm.jsp"%>
 	<%@ include file="orderForm/orderForm.jsp"%>
 </body>
 </html>

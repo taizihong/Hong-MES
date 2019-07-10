@@ -28,17 +28,18 @@
     <mvc:resources location="/css/" mapping="/css/**"/>
     <mvc:resources location="/bootstrap3.3.5/" mapping="/bootstrap3.3.5/**"/>
     <mvc:resources location="/assets/" mapping="/assets/**"/>
-    <mvc:resources location="/ztree/" mapping="/ztree/**"/>
-   
-    <mvc:resources location="/template/" mapping="/template/**"/> 
+    <mvc:resources location="/ztree/" mapping="/ztree/**"/> 
     
+    <mvc:resources location="/WEB-INF/views/inrecord/" mapping="/inrecord/**"/> 
     <mvc:resources location="/WEB-INF/views/order/" mapping="/order/**"/> 
    
-<!--     配置全局异常类
+   
+    <!-- 配置全局异常类 -->
     <bean class="com.hong.common.SpringExceptionResolver"></bean>
-    配置全局上下文
-    <bean id="application" class="com.hong.common.ApplicationContextHelper"></bean> -->
-	<!-- 配置视图解析器 -->
+
+<!--     配置全局上下文 -->
+<!--     <bean id="application" class="com.hong.common.ApplicationContextHelper"></bean> -->
+	<!--  配置视图解析器  -->
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
 	<!-- 配置json解析器 -->
     <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
