@@ -15,6 +15,7 @@
     <result column="product_irontypeweight" property="productIrontypeweight" jdbcType="REAL" />
     <result column="product_materialname" property="productMaterialname" jdbcType="VARCHAR" />
     <result column="product_imgid" property="productImgid" jdbcType="VARCHAR" />
+    <result column="product_luhao" property="productLuhao" jdbcType="VARCHAR" />
     <result column="product_materialsource" property="productMaterialsource" jdbcType="VARCHAR" />
     <result column="product_status" property="productStatus" jdbcType="INTEGER" />
     <result column="product_remark" property="productRemark" jdbcType="VARCHAR" />
@@ -25,8 +26,8 @@
   <sql id="Base_Column_List" >
     id, p_id, product_id, product_orderid, product_planid, product_targetweight, product_realweight, 
     product_leftweight, product_bakweight, product_irontype, product_irontypeweight, 
-    product_materialname, product_imgid, product_materialsource, product_status, product_remark, 
-    product_operator, product_operate_time, product_operate_ip
+    product_materialname, product_imgid, product_luhao, product_materialsource, product_status, 
+    product_remark, product_operator, product_operate_time, product_operate_ip
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -43,16 +44,16 @@
       product_orderid, product_planid, product_targetweight, 
       product_realweight, product_leftweight, product_bakweight, 
       product_irontype, product_irontypeweight, product_materialname, 
-      product_imgid, product_materialsource, product_status, 
-      product_remark, product_operator, product_operate_time, 
-      product_operate_ip)
+      product_imgid, product_luhao, product_materialsource, 
+      product_status, product_remark, product_operator, 
+      product_operate_time, product_operate_ip)
     values (#{id,jdbcType=INTEGER}, #{pId,jdbcType=INTEGER}, #{productId,jdbcType=VARCHAR}, 
       #{productOrderid,jdbcType=INTEGER}, #{productPlanid,jdbcType=INTEGER}, #{productTargetweight,jdbcType=REAL}, 
       #{productRealweight,jdbcType=REAL}, #{productLeftweight,jdbcType=REAL}, #{productBakweight,jdbcType=REAL}, 
       #{productIrontype,jdbcType=VARCHAR}, #{productIrontypeweight,jdbcType=REAL}, #{productMaterialname,jdbcType=VARCHAR}, 
-      #{productImgid,jdbcType=VARCHAR}, #{productMaterialsource,jdbcType=VARCHAR}, #{productStatus,jdbcType=INTEGER}, 
-      #{productRemark,jdbcType=VARCHAR}, #{productOperator,jdbcType=VARCHAR}, #{productOperateTime,jdbcType=TIMESTAMP}, 
-      #{productOperateIp,jdbcType=VARCHAR})
+      #{productImgid,jdbcType=VARCHAR}, #{productLuhao,jdbcType=VARCHAR}, #{productMaterialsource,jdbcType=VARCHAR}, 
+      #{productStatus,jdbcType=INTEGER}, #{productRemark,jdbcType=VARCHAR}, #{productOperator,jdbcType=VARCHAR}, 
+      #{productOperateTime,jdbcType=TIMESTAMP}, #{productOperateIp,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hong.model.MesProduct" >
     insert into mes_product
@@ -95,6 +96,9 @@
       </if>
       <if test="productImgid != null" >
         product_imgid,
+      </if>
+      <if test="productLuhao != null" >
+        product_luhao,
       </if>
       <if test="productMaterialsource != null" >
         product_materialsource,
@@ -155,6 +159,9 @@
       <if test="productImgid != null" >
         #{productImgid,jdbcType=VARCHAR},
       </if>
+      <if test="productLuhao != null" >
+        #{productLuhao,jdbcType=VARCHAR},
+      </if>
       <if test="productMaterialsource != null" >
         #{productMaterialsource,jdbcType=VARCHAR},
       </if>
@@ -214,6 +221,9 @@
       <if test="productImgid != null" >
         product_imgid = #{productImgid,jdbcType=VARCHAR},
       </if>
+      <if test="productLuhao != null" >
+        product_luhao = #{productLuhao,jdbcType=VARCHAR},
+      </if>
       <if test="productMaterialsource != null" >
         product_materialsource = #{productMaterialsource,jdbcType=VARCHAR},
       </if>
@@ -249,6 +259,7 @@
       product_irontypeweight = #{productIrontypeweight,jdbcType=REAL},
       product_materialname = #{productMaterialname,jdbcType=VARCHAR},
       product_imgid = #{productImgid,jdbcType=VARCHAR},
+      product_luhao = #{productLuhao,jdbcType=VARCHAR},
       product_materialsource = #{productMaterialsource,jdbcType=VARCHAR},
       product_status = #{productStatus,jdbcType=INTEGER},
       product_remark = #{productRemark,jdbcType=VARCHAR},

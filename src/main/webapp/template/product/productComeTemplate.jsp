@@ -2,7 +2,7 @@
 <script id="productListTemplate" type="x-tmpl-mustache">
 {{#productList}}
  <tr role="row" class="material-name odd" data-id="{{id}}"><!--even -->
-	<td>{{materialId}}</td>
+	<td>{{productId}}</td>
 	<td>{{parentPro.materialId}}</td>
 	<td>{{materialMaterialname}}</td>
 	<td>{{materialMaterialsource}}</td>

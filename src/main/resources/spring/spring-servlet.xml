@@ -33,6 +33,7 @@
     <mvc:resources location="/WEB-INF/views/inrecord/" mapping="/inrecord/**"/> 
     <mvc:resources location="/WEB-INF/views/order/" mapping="/order/**"/> 
     <mvc:resources location="/WEB-INF/views/plan/" mapping="/plan/**"/> 
+    <mvc:resources location="/WEB-INF/views/product/" mapping="/product/**"/> 
    
    
     <!-- 配置全局异常类 -->

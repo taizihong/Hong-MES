@@ -38,6 +38,8 @@ public class MesProduct {
 
     private String productImgid;
 
+    private String productLuhao;
+
     private String productMaterialsource;
 
     private Integer productStatus;
@@ -152,6 +154,14 @@ public class MesProduct {
 
     public void setProductImgid(String productImgid) {
         this.productImgid = productImgid == null ? null : productImgid.trim();
+    }
+
+    public String getProductLuhao() {
+        return productLuhao;
+    }
+
+    public void setProductLuhao(String productLuhao) {
+        this.productLuhao = productLuhao == null ? null : productLuhao.trim();
     }
 
     public String getProductMaterialsource() {
