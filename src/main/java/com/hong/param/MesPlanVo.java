@@ -1,5 +1,11 @@
 package com.hong.param;
 
+import java.util.Date;
+
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 import lombok.Getter;
 import lombok.Setter;

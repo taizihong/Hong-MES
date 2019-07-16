@@ -14,21 +14,21 @@ import org.springframework.stereotype.Service;
 import com.google.common.base.Preconditions;
 import com.hong.beans.PageQuery;
 import com.hong.beans.PageResult;
-import com.hong.dto.SearchPlanDto;
-import com.hong.exception.ParamException;
-import com.hong.model.MesProduct;
-import com.hong.param.MesPlanVo;
-import com.hong.param.SearchPlanParam;
-import com.hong.util.BeanValidator;
-import com.hong.util.UUIDUtil;
 import com.hong.dao.MesOrderCustomerMapper;
 import com.hong.dao.MesOrderMapper;
 import com.hong.dao.MesPlanCustomerMapper;
 import com.hong.dao.MesPlanMapper;
 import com.hong.dao.MesProductMapper;
+import com.hong.dto.SearchPlanDto;
+import com.hong.exception.ParamException;
 import com.hong.model.MesOrder;
 import com.hong.model.MesPlan;
+import com.hong.model.MesProduct;
+import com.hong.param.MesPlanVo;
+import com.hong.param.SearchPlanParam;
+import com.hong.util.BeanValidator;
 import com.hong.util.MyStringUtils;
+import com.hong.util.UUIDUtil;
 
 @Service
 public class PlanService {
@@ -44,8 +44,8 @@ public class PlanService {
 	private MesProductMapper mesProductMapper;
 	@Resource
 	private SqlSession sqlSession;
-
-//批量启动order后的批量plan启动
+	
+	//批量启动order后的批量plan启动
 	public void startPlansByOrderIds(String[] ids) {
 		for(String tempId:ids) {
 			Integer id=Integer.parseInt(tempId);
@@ -111,8 +111,7 @@ public class PlanService {
 			}
 		}
 	}
-
-	// 计划分页
+	//计划分页
 	public PageResult<MesPlan> searchPageList(SearchPlanParam param, PageQuery page) {
 		// 验证页码是否为空
 		BeanValidator.check(page);
@@ -151,12 +150,12 @@ public class PlanService {
 
 	public void update(MesPlanVo mesPlanVo) {
 		BeanValidator.check(mesPlanVo);
-		MesPlan mesPlan = new MesPlan();
+		MesPlan mesPlan=new MesPlan();
 		BeanUtils.copyProperties(mesPlanVo, mesPlan);
-		mesPlan.setPlanCometime(MyStringUtils.string2Date(mesPlanVo.getPlanCometime(), null));
-		mesPlan.setPlanCommittime(MyStringUtils.string2Date(mesPlanVo.getPlanCommittime(), null));
-		mesPlan.setPlanWorkstarttime(MyStringUtils.string2Date(mesPlanVo.getPlanWorkstarttime(), null));
-		mesPlan.setPlanWorkendtime(MyStringUtils.string2Date(mesPlanVo.getPlanWorkendtime(), null));
+		mesPlan.setPlanCometime(MyStringUtils.string2Date(mesPlanVo.getPlanCometime(),null));
+		mesPlan.setPlanCommittime(MyStringUtils.string2Date(mesPlanVo.getPlanCommittime(),null));
+		mesPlan.setPlanWorkstarttime(MyStringUtils.string2Date(mesPlanVo.getPlanWorkstarttime(),null));
+		mesPlan.setPlanWorkendtime(MyStringUtils.string2Date(mesPlanVo.getPlanWorkendtime(),null));
 		mesPlan.setPlanOperator("user01");
 		mesPlan.setPlanOperateIp("127.0.0.1");
 		mesPlan.setPlanOperateTime(new Date());

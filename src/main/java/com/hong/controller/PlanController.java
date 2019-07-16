@@ -14,46 +14,46 @@ import com.hong.param.MesPlanVo;
 import com.hong.param.SearchPlanParam;
 import com.hong.service.PlanService;
 
+
 @Controller
 @RequestMapping("/plan")
 public class PlanController {
 
-	private static String FPATH = "plan/";
+	private static String FPATH="plan/";
 	@Resource
 	private PlanService planService;
-
+	
 	@RequestMapping("/plan.page")
 	public String planPage() {
-		return FPATH + "plan";
+		return FPATH+"plan";
 	}
-
 	@RequestMapping("/planStarted.page")
 	public String planStartedPage() {
-		return FPATH + "planStarted";
+		return FPATH+"planStarted";
 	}
-
-	// 批量处理待执行计划启动
-	// 批量启动处理
+	//批量处理待执行计划启动
+	//批量启动处理
 	@ResponseBody
 	@RequestMapping("/planBatchStart.json")
 	public JsonData planBatchStart(String ids) {
 		planService.batchStartWithIds(ids);
 		return JsonData.success();
 	}
-
-	// 分页显示
-	@RequestMapping("/plan.json")
-	@ResponseBody
-	public JsonData searchPage(SearchPlanParam param, PageQuery page) {
-		PageResult<MesPlan> pr = (PageResult<MesPlan>) planService.searchPageList(param, page);
-		return JsonData.success(pr);
-	}
 	
-	@ResponseBody
-	@RequestMapping("/update.json")
-	public JsonData updatePlan(MesPlanVo mesPlanVo) {
-		planService.update(mesPlanVo);
-		return JsonData.success();
-	}
+	//分页显示
+    @RequestMapping("/plan.json")
+    @ResponseBody
+    public JsonData searchPage(SearchPlanParam param, PageQuery page) {
+    	PageResult<MesPlan> pr=(PageResult<MesPlan>) planService.searchPageList(param, page);
+    	return JsonData.success(pr);
+    }
+    
+    @RequestMapping("/update.json")
+    @ResponseBody
+    public JsonData updatePlan(MesPlanVo mesPlanVo) {
+    	planService.update(mesPlanVo);
+    	return JsonData.success();
+    }
+    
 
 }

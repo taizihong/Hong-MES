@@ -2,7 +2,6 @@ package com.hong.controller;
 
 import javax.annotation.Resource;
 
-import org.junit.runner.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,7 +22,7 @@ public class OrderController {
 	
 	@Resource
 	private OrderService orderService;
-	
+
 	@RequestMapping("/order.page")
 	public String orderPage() {
 		return FPATH+"order";
@@ -43,14 +42,13 @@ public class OrderController {
 		return JsonData.success();
 	}
 	
-	
     @RequestMapping("/order.json")
     @ResponseBody
     public JsonData searchPage(SearchOrderParam param, PageQuery page) {
     	PageResult<MesOrder> pr=(PageResult<MesOrder>) orderService.searchPageList(param, page);
     	return JsonData.success(pr);
     }
-    
+	
 	//添加接收json数据的注解
 	@ResponseBody
 	@RequestMapping("/insert.json")
@@ -65,4 +63,5 @@ public class OrderController {
     	orderService.update(mesOrderVo);
     	return JsonData.success();
     }
+	
 }

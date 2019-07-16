@@ -101,6 +101,7 @@
 			</div>
 		</div>
 	</div>
-
+	<%@ include file="orderForm/orderUpdateForm.jsp" %>
+	<%@ include file="orderForm/orderForm.jsp" %>
 </body>
 </html>

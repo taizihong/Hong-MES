@@ -9,7 +9,7 @@
 	<td>{{productMaterialsource}}</td>
 	<td>{{productTargetweight}}</td>
 	<td>{{productRealweight}}</td>
-    <td>{{productLeftweight}}</td>
+	<td>{{productLeftweight}}</td>
 	<td>{{productImgid}}</td>
     <td>{{productLuhao}}</td>
 	<td>{{productIrontype}}</td>

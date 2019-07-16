@@ -37,7 +37,7 @@
 									<label> 展示 <select id="pageSize"
 										name="dynamic-table_length" aria-controls="dynamic-table"
 										class="form-control input-sm">
-											<option value="10">10</option>
+											<option value="8">8</option>
 									</select> 条记录
 									</label> <input id="keyword" type="search" name="keyword"
 										class="form-control input-sm" placeholder="关键词"
@@ -124,7 +124,7 @@
 			</div>
 		</div>
 	</div>
- 	<%@ include file="planForm/planUpdateForm.jsp" %>
-	<%@ include file="planForm/planForm.jsp" %> 
+	<%@ include file="planForm/planUpdateForm.jsp" %>
+	<%@ include file="planForm/planForm.jsp" %>
 </body>
 </html>

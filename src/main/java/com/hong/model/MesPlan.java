@@ -2,15 +2,17 @@ package com.hong.model;
 
 import java.util.Date;
 
+import com.hong.model.MesOrder.MesOrderBuilder;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+@ToString
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@ToString
 public class MesPlan {
     private Integer id;
 

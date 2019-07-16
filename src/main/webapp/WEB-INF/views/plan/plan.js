@@ -325,7 +325,7 @@ $(function() {
 			//新增和修改plan的通用方法-dml
 		//isCreate是否是新增订单(true,false)，如果不是，执行修改
 		//successCallbak function(data)  failCallbak function(data)
-		function updatePlan(isCreate, successCallbak, failCallbak) {
+		function updateOrder(isCreate, successCallbak, failCallbak) {
 			$.ajax({
 				url : isCreate ? "/plan/insert.json"
 						: "/plan/update.json",

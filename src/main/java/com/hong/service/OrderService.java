@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
 import com.google.common.base.Preconditions;
+import com.hong.param.MesOrderVo;
 import com.hong.beans.PageQuery;
 import com.hong.beans.PageResult;
 import com.hong.dao.MesOrderCustomerMapper;
@@ -20,11 +21,9 @@ import com.hong.dto.SearchOrderDto;
 import com.hong.exception.ParamException;
 import com.hong.exception.SysMineException;
 import com.hong.model.MesOrder;
-import com.hong.param.MesOrderVo;
 import com.hong.param.SearchOrderParam;
 import com.hong.util.BeanValidator;
 import com.hong.util.MyStringUtils;
-
 
 @Service
 public class OrderService {

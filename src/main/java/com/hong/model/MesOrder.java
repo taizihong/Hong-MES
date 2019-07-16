@@ -2,9 +2,6 @@ package com.hong.model;
 
 import java.util.Date;
 
-import com.hong.model.MesOrder;
-import com.hong.model.MesOrder.MesOrderBuilder;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
