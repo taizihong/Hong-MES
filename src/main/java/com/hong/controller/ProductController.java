@@ -55,5 +55,13 @@ public class ProductController {
     	return JsonData.success(pr);
     }
 	
+	//修改
+	@RequestMapping("/update.json")
+	@ResponseBody
+	public JsonData update(MesProductVo productVo) {
+		productService.update(productVo);
+		return JsonData.success(true);
+	}
+	
 	
 }

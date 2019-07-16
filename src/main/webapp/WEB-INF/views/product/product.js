@@ -224,6 +224,8 @@ $(function() {
 								$("#input-productIrontypeweight2").val(targetOrder.productIrontypeweight);
 								$("#input-productIrontype2").val(targetOrder.productIrontype);
 								$("#input-productRemark2").val(targetOrder.productRemark);
+								$("#input-productLuhao2").val(targetOrder.productLuhao);
+								
 								$("#input-productRealweight2").val(targetOrder.productRealweight);
 								$("#input-productLeftweight2").val(targetOrder.productLeftweight);
 								/////////////////////////////////////////////////////////////////

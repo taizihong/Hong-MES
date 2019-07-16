@@ -125,7 +125,7 @@
 			</div>
 		</div>
 	</div>
-<%-- 	<%@ include file="productForm/productForm.jsp" %>
-	<%@ include file="productForm/productUpdateForm.jsp" %> --%>
+ 	<%@ include file="productForm/productForm.jsp" %>
+	<%@ include file="productForm/productUpdateForm.jsp" %> 
 </body>
 </html>

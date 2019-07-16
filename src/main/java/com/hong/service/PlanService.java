@@ -102,7 +102,7 @@ public class PlanService {
 						.productOrderid(order.getId()).productPlanid(plan.getId())//
 						.productMaterialname(order.getOrderMaterialname())//
 						.productImgid(order.getOrderImgid())//
-						.productMaterialsource(order.getOrderMaterialsource())//\
+						.productMaterialsource(order.getOrderMaterialsource())//
 						.productStatus(0).build();
 				mesProduct.setProductOperateIp("127.0.0.1");
 				mesProduct.setProductOperator("user01");

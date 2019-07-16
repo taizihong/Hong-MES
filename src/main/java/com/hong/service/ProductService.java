@@ -336,6 +336,32 @@ public class ProductService {
 		return PageResult.<ProductDto>builder().build();
 	}
 	
+	public void update(MesProductVo productVo) {
+		// 校验
+		BeanValidator.check(productVo);
+		
+		MesProduct product=mesProdcutMapper.selectByPrimaryKey(productVo.getId());
+		product.setProductImgid(productVo.getProductImgid());
+		product.setProductLuhao(productVo.getProductLuhao());
+		product.setProductIrontype(productVo.getProductIrontype());
+		product.setProductIrontypeweight(productVo.getProductIrontypeweight());
+		product.setProductMaterialname(productVo.getProductMaterialname());
+		product.setProductTargetweight(productVo.getProductTargetweight());
+		product.setProductMaterialsource(productVo.getProductMaterialsource());
+		product.setProductRemark(productVo.getProductRemark());
+		product.setProductRealweight(productVo.getProductRealweight());
+		
+		float temp=product.getProductLeftweight()-product.getProductBakweight();
+		float leftweight=product.getProductLeftweight();
+		
+		product.setProductLeftweight(productVo.getProductLeftweight());
+		//剩余重量备份需要重新设置
+		product.setProductBakweight(product.getProductLeftweight()-temp);
+		
+		if(leftweight>=temp)
+		mesProdcutMapper.updateByPrimaryKeySelective(product);
+	}
+	
 	
 
 }
