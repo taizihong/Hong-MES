@@ -219,7 +219,7 @@ public class OrderService {
 		private Long currentdbidscount;
 		private List<String> ids = new ArrayList<String>();
 		private String idpre;
-		private String yearstr;
+//		private String yearstr;
 		private String idafter;
 
 		public IdGenerator() {
@@ -252,13 +252,13 @@ public class OrderService {
 			this.idpre = idpre;
 		}
 
-		public String getYearstr() {
-			return yearstr;
-		}
-
-		public void setYearstr(String yearstr) {
-			this.yearstr = yearstr;
-		}
+//		public String getYearstr() {
+//			return yearstr;
+//		}
+//
+//		public void setYearstr(String yearstr) {
+//			this.yearstr = yearstr;
+//		}
 
 		public String getIdafter() {
 			return idafter;
@@ -270,7 +270,7 @@ public class OrderService {
 
 		public List<String> initIds(Long ocounts) {
 			for (int i = 0; i < ocounts; i++) {
-				this.ids.add(getIdPre() + yearStr() + getIdAfter(i));
+				this.ids.add(getIdPre()  + getIdAfter(i));
 			}
 			return this.ids;
 		}
@@ -278,7 +278,7 @@ public class OrderService {
 		//
 		private String getIdAfter(int addcount) {
 			// 系统默认生成5位 ZX1700001
-			int goallength = 5;
+			int goallength = 6;
 			// 获取数据库order的总数量+1+循环次数(addcount)
 			int count = this.currentdbidscount.intValue() + 1 + addcount;
 			StringBuilder sBuilder = new StringBuilder("");
@@ -293,16 +293,16 @@ public class OrderService {
 
 		private String getIdPre() {
 			// idpre==null?this.idpre="ZX":this.idpre=idpre;
-			this.idpre = "ZX";
+			this.idpre = "ZX_P_";
 			return this.idpre;
 		}
 
-		private String yearStr() {
-			Date currentdate = new Date();
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			String yearstr = sdf.format(currentdate).substring(2, 4);
-			return yearstr;
-		}
+//		private String yearStr() {
+//			Date currentdate = new Date();
+//			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//			String yearstr = sdf.format(currentdate).substring(2, 4);
+//			return yearstr;
+//		}
 
 		public void clear() {
 			this.ids = null;

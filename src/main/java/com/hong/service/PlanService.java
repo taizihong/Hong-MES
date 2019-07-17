@@ -98,7 +98,7 @@ public class PlanService {
 				String orderid=plan.getPlanOrderid();
 				MesOrder order=mesOrderCustomerMapper.selectByOrderId(orderid);
 				//product
-				MesProduct mesProduct=MesProduct.builder().productId(UUIDUtil.generateUUID())//
+				MesProduct mesProduct=MesProduct.builder().productId(plan.getPlanOrderid())//
 						.productOrderid(order.getId()).productPlanid(plan.getId())//
 						.productMaterialname(order.getOrderMaterialname())//
 						.productImgid(order.getOrderImgid())//
