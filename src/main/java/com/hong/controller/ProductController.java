@@ -41,13 +41,13 @@ public class ProductController {
 	}
 	
 	
-	//材料管理页面
+	//批量到库
 	@RequestMapping("/product.page")
 	public String productList() {
 		return FPATH+"product";
 	}
 	
-	//材料到库管理分页页面  分页
+	//批量到库 分页
 	@RequestMapping("/product.json")
 	@ResponseBody
     public JsonData searchPage(SearchProductParam param, PageQuery page) {
@@ -55,7 +55,7 @@ public class ProductController {
     	return JsonData.success(pr);
     }
 	
-	//修改
+	//到库查询 修改
 	@RequestMapping("/update.json")
 	@ResponseBody
 	public JsonData update(MesProductVo productVo) {
@@ -63,5 +63,23 @@ public class ProductController {
 		return JsonData.success(true);
 	}
 	
+	//材料批量到库启动
+	@RequestMapping("/productBatchStart.json")
+    public String productBatchStart(String ids) {
+		productService.batchStart(ids);
+		return FPATH+"product";
+    }
+	
+	//到库查询
+	@RequestMapping("/productCome.page")
+	public String productComePage() {
+		return FPATH+"productCome";
+	}
+	
+	//钢锭查询
+	@RequestMapping("/productIron.page")
+	public String productIronList() {
+		return FPATH+"productIron";
+	}
 	
 }

@@ -10,6 +10,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
+import com.hong.dao.MesStockMapper;
+import com.hong.model.MesOrder;
+import com.hong.model.MesStock;
 import com.hong.beans.PageQuery;
 import com.hong.beans.PageResult;
 import com.hong.dao.MesOrderMapper;
@@ -31,27 +34,48 @@ public class ProductService {
 	private MesProductMapper mesProdcutMapper;
 	@Resource
 	private MesOrderMapper mesOrderMapper;
+	
+	@Resource
+	private MesStockMapper messtockMapper;
 	@Resource
 	private MesProductCustomerMapper mesProductCustomerMapper;
 
 	@Resource
 	private SqlSession sqlSession;
-	// 一开始就定义一个id生成器
+	//定义一个ID生成器
 	private IdGenerator ig = new IdGenerator();
 
+	//批量到库启动
+//	public void batchStart(String ids) {
+//		if(StringUtils.isNotEmpty(ids)) {
+//			MesProductMapper mesProductMapper=sqlSession.getMapper(MesProductMapper.class);
+//			String[] idStrs=ids.split("&");
+//			for(String id:idStrs) {
+//				MesProduct mesProduct=mesProductMapper.selectByPrimaryKey(Integer.parseInt(id));
+//				mesProduct.setProductStatus(1);
+//				mesProduct.setProductOperateTime(new Date());
+//				mesProductMapper.updateByPrimaryKeySelective(mesProduct);
+//				//TODO
+//				//生成待入库记录--原料库
+//				batchStockPre(Integer.parseInt(id),mesProductMapper);
+//			}
+//		}
+//	}
 	public void batchStart(String ids) {
 		if(StringUtils.isNotEmpty(ids)) {
 			MesProductMapper mesProductMapper=sqlSession.getMapper(MesProductMapper.class);
 			String[] idStrs=ids.split("&");
 			for(String id:idStrs) {
-				MesProduct mesProduct=mesProductMapper.selectByPrimaryKey(Integer.parseInt(id));
+				MesProduct mesProduct= mesProductMapper.selectByPrimaryKey(Integer.parseInt(id));
 				mesProduct.setProductStatus(1);
 				mesProduct.setProductOperateTime(new Date());
 				mesProductMapper.updateByPrimaryKeySelective(mesProduct);
 				//TODO
+				batchStockPre(Integer.parseInt(id), mesProductMapper);			
 			}
 		}
 	}
+	
 //	public void productInsert(MesProductVo mesProductVo) {
 //		// TODO Auto-generated method stub
 //		// 校验
@@ -88,6 +112,37 @@ public class ProductService {
 //			throw new SysMineException("创建过程问题");
 //		}
 //	}
+	
+	//批量待入库操作-默认进入原料库
+	private void batchStockPre(Integer id, MesProductMapper mesProductMapper) {
+		if(id!=null) {
+			//生成库存逻辑
+			//增加操作
+			MesProduct mesProduct = mesProductMapper.selectByPrimaryKey(id);
+			//Order*
+			if(mesProduct!=null) {
+				MesStock mesStock=MesStock.builder().stockProductid(mesProduct.getId())//
+						.stockImgid(mesProduct.getProductImgid())//
+						.stockProductsource(mesProduct.getProductMaterialsource())//
+						.stockStatus(1)//
+						.stockStorageid(1).build();//1 代表原料库
+				
+				Integer orderid=mesProduct.getProductOrderid();
+				if(orderid!=null) {
+					MesOrder mesOrder=mesOrderMapper.selectByPrimaryKey(mesProduct.getProductOrderid());
+					if(mesOrder!=null) {
+						mesStock.setStockProductname(mesOrder.getOrderProductname());
+						mesStock.setStockOrderid(orderid);
+						mesStock.setStockOrdername(mesOrder.getOrderProductname());
+					}
+				}
+				//mesStock.setStockProductname(product.getProductMaterialname());
+				mesStock.setStockStoragestatus(1);//待入库				
+				messtockMapper.insertSelective(mesStock);
+			}
+		}
+	}
+
 	
 	public void insert(MesProductVo mesproductVo) {
 		// 校验
@@ -312,7 +367,7 @@ public class ProductService {
 //	}
 	
 	
-	// 分页
+	// 批量到库 分页
 	public PageResult<ProductDto> searchPageList(SearchProductParam param, PageQuery page) {
 		// 校验
 		BeanValidator.check(page);
@@ -336,6 +391,7 @@ public class ProductService {
 		return PageResult.<ProductDto>builder().build();
 	}
 	
+	//到库查询修改
 	public void update(MesProductVo productVo) {
 		// 校验
 		BeanValidator.check(productVo);

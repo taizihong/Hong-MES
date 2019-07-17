@@ -10,6 +10,7 @@
 	<td>{{productRealweight}}</td>
 	<td>{{productLeftweight}}</td>
 	<td>{{productImgid}}</td>
+    <td>{{productLuhao}}</td>
 	<td>{{productIrontype}}</td>
 	<td>{{productIrontypeweight}}</td>
 	<td>{{#bold}}{{showStatus}}{{/bold}}</td> 

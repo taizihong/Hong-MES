@@ -10,6 +10,7 @@
 	<td>{{materialTargetweight}}</td>
 	<td>{{materialRealweight}}</td>
 	<td>{{materialImgid}}</td>
+    <td>{{materialLuhao}</td>
 	<td>{{materialIrontype}}</td>
 	<td>{{materialIrontypeweight}}</td>
 	<td>{{#bold}}{{showStatus}}{{/bold}}</td> 
