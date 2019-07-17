@@ -11,6 +11,7 @@
 	<td>{{productLeftweight}}</td>
 	<td>{{productBakweight}}</td>
 	<td>{{productImgid}}</td>
+    <td>{{productLuhao}}</td>
 	<td>{{productIrontype}}</td>
 	<td>{{productIrontypeweight}}</td>
 	<td>{{#bold}}{{showStatus}}{{/bold}}</td> 

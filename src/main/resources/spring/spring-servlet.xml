@@ -10,13 +10,13 @@
 <!-- 	<mvc:default-servlet-handler/>  放行资源的第三种方式
  -->  	
  	<!-- 配置拦截器 -->
-<!--  	<mvc:interceptors>
+  	<mvc:interceptors>
  		<bean class="com.hong.common.HttpInterceptor"></bean>
  		<mvc:interceptor> 
  	    	<mvc:mapping path="/**"/>  
         	<bean class="com.hong.interceptor.SameUrlDataInterceptor"/>
         </mvc:interceptor>  
- 	</mvc:interceptors> -->
+ 	</mvc:interceptors> 
  
  	<!-- 启动包扫描功能 -->
     <context:component-scan base-package="com.hong.controller" />

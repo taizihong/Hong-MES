@@ -3,6 +3,7 @@ package com.hong.controller;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -11,6 +12,7 @@ import com.hong.beans.PageResult;
 import com.hong.common.JsonData;
 import com.hong.common.SameUrlData;
 import com.hong.dto.ProductDto;
+import com.hong.model.MesProduct;
 import com.hong.param.MesProductVo;
 import com.hong.param.SearchProductParam;
 import com.hong.service.ProductService;
@@ -58,8 +60,8 @@ public class ProductController {
 	//到库查询 修改
 	@RequestMapping("/update.json")
 	@ResponseBody
-	public JsonData update(MesProductVo productVo) {
-		productService.update(productVo);
+	public JsonData update(MesProductVo mesproductVo) {
+		productService.update(mesproductVo);
 		return JsonData.success(true);
 	}
 	
@@ -81,5 +83,63 @@ public class ProductController {
 	public String productIronList() {
 		return FPATH+"productIron";
 	}
+	
+	//材料绑定列表
+	@RequestMapping("/productBindList.page")
+	public String productBindList() {
+		return FPATH+"productBindList";
+	}
+	//绑定钢材分页
+	@RequestMapping("/productBindList.json")
+	@ResponseBody
+    public JsonData searchBindListPage(SearchProductParam param, PageQuery page) {
+    	PageResult<ProductDto> pr=(PageResult<ProductDto>) productService.searchPageBindList(param, page);
+    	return JsonData.success(pr);
+    }
+	
+	//待绑定钢材页面跳转
+	@RequestMapping("/productBind.page")
+	public String productBindPage(String id,Model model) {
+		MesProduct mesProduct=productService.selectById(id);
+		if(mesProduct!=null) {
+			model.addAttribute("product",mesProduct);
+			return FPATH+"productBind";
+		}else {
+			return FPATH+"productBindList";
+		}
+		
+	}
+	
+	//绑定材料分页
+	@RequestMapping("/productChildBindList.json")
+	@ResponseBody
+	public JsonData searchChildBindListPage(SearchProductParam param,PageQuery page) {
+		PageResult<ProductDto> pro= (PageResult<ProductDto>)productService.searchPageChildBindList(param,page);
+		return JsonData.success(pro);
+	}
+	
+	//绑定逻辑
+	@RequestMapping("/bind.json")
+	@ResponseBody
+	public JsonData bind(String parentId,String childId) {
+		productService.bind(parentId,childId);
+    	return JsonData.success(true);
+	}
+	//查看钢材已绑定的钢材
+	@RequestMapping("/productParentBindList.json")
+	@ResponseBody
+	public JsonData searchParentBindListPage(SearchProductParam param, PageQuery page) {
+		PageResult<ProductDto> pro=(PageResult<ProductDto>)productService.searchPageParentBindList(param, page);
+		return JsonData.success(pro);
+	}
+	//钢材解绑钢锭
+	@RequestMapping("/parentUnbound.json")
+	@ResponseBody
+    public JsonData unbound(String childId) {
+    	boolean result=productService.unbound(childId);
+    	return JsonData.success(result);
+    }
+	
+	
 	
 }
